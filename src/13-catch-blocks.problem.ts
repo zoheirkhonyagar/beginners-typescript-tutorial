@@ -1,4 +1,5 @@
 import { expect, it } from "vitest";
+import { TypeOf } from "zod";
 
 const tryCatchDemo = (state: "fail" | "succeed") => {
   try {
@@ -6,7 +7,7 @@ const tryCatchDemo = (state: "fail" | "succeed") => {
       throw new Error("Failure!");
     }
   } catch (e) {
-    return e.message;
+    if (e instanceof Error) return e.message;
   }
 };
 
